@@ -26,5 +26,5 @@ dev_dependencies:
 flutter:
 
   assets:
-    - assets/flags/
+    # - assets/flags/
     - packages/intl_phone_number_input/src/models/countries.json
