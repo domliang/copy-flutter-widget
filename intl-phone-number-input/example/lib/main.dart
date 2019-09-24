@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               InternationalPhoneNumberInput(
                 onInputChange: onPhoneNumberChanged,
-                shouldParse: false,
+                // shouldParse: false,
               ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
@@ -95,8 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               InternationalPhoneNumberInput(
                 onInputChange: onPhoneNumberChanged,
-                shouldParse: true,
-                shouldValidate: true,
+                // shouldParse: true,
+                // shouldValidate: true,
                 initialCountry2LetterCode: 'US',
                 hintText: 'Insert phone number',
               ),
