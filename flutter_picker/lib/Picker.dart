@@ -347,9 +347,15 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
       ),
     );
     if (widget.isModal == null || widget.isModal == false) return v;
-    return GestureDetector(
-      onTap: () {},
-      child: v,
+    return SafeArea(
+      bottom: true,
+      left: false,
+      top: false,
+      right: false,
+      child: GestureDetector(
+        onTap: () {},
+        child: v,
+      ),
     );
   }
 
