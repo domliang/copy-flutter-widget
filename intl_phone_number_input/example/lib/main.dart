@@ -28,6 +28,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String phoneNumber = '';
+  FocusNode phoneNumberFocusNode = FocusNode();
   bool valid = false;
 
   void onPhoneNumberChanged(String phoneNumber) {
@@ -67,101 +68,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               InternationalPhoneNumberInput(
-                onInputChange: onPhoneNumberChanged,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Text(
-                  'Default Constructor with parsing set to false',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .body1
-                      .apply(fontSizeFactor: 1.5, color: Colors.black),
-                ),
-              ),
-              InternationalPhoneNumberInput(
-                onInputChange: onPhoneNumberChanged,
-                // shouldParse: false,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Text(
-                  'Default Constructor with initialCountry set and hint text',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .body1
-                      .apply(fontSizeFactor: 1.5, color: Colors.black),
-                ),
-              ),
-              InternationalPhoneNumberInput(
-                onInputChange: onPhoneNumberChanged,
-                // shouldParse: true,
-                // shouldValidate: true,
-                initialCountry2LetterCode: 'US',
-                hintText: 'Insert phone number',
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Text(
-                  'Custom Border ',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .body1
-                      .apply(fontSizeFactor: 1.5, color: Colors.black),
-                ),
-              ),
-              InternationalPhoneNumberInput.withCustomBorder(
-                onInputChange: onPhoneNumberChanged,
-                inputBorder: OutlineInputBorder(),
-                hintText: '(100) 123-4567 8901',
-                initialCountry2LetterCode: 'US',
-                errorMessage: 'Wrong number',
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Text(
-                  'Custom Decoration without validation',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .body1
-                      .apply(fontSizeFactor: 1.5, color: Colors.black),
-                ),
-              ),
-              InternationalPhoneNumberInput.withCustomDecoration(
-                onInputChange: onPhoneNumberChanged,
-                initialCountry2LetterCode: 'US',
-                inputDecoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(40),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Text(
-                  'Custom Decoration with validation',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .body1
-                      .apply(fontSizeFactor: 1.5, color: Colors.black),
-                ),
-              ),
-              InternationalPhoneNumberInput.withCustomDecoration(
-                onInputChange: onPhoneNumberChanged,
-                onInputValidated: onInputChanged,
-                initialCountry2LetterCode: 'US',
-                inputDecoration: InputDecoration(
-                  hintText: 'Enter phone number',
-                  errorText: valid ? null : 'Invalid',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(40),
-                    ),
-                  ),
-                ),
-              ),
+                // focusNode: phoneNumberFocusNode,
+                errorMessage: 'error',
+                hintText: 'hint',
+                onInputChanged: (v) {
+                  print('onInputChanged phone number $v');
+                },
+                onInputValidated: (v) {
+                  print('验证--------> $v');
+                },
+                shouldParse: true,
+                shouldValidate: true,
+                initialCountry2LetterCode: 'CN',
+                formatInput: false,
+              )
             ],
           ),
         ),

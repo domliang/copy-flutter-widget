@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_number_input/src/models/country_model.dart';
@@ -30,7 +32,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.inputBorder,
       this.inputDecoration,
       this.initialCountry2LetterCode = 'NG',
-      this.hintText = '(800) 000-0001 23',
+      this.hintText = '180-0000-0000',
       this.shouldParse = true,
       this.shouldValidate = true,
       this.formatInput = true,
@@ -126,6 +128,7 @@ class _InternationalPhoneNumberInputState
 
   void _phoneNumberControllerListener() {
     _isNotValid = false;
+    print('_controller.text ${_controller.text}');
     String parsedPhoneNumberString =
         _controller.text.replaceAll(RegExp(r'([\(\1\)\1\s\-])'), '');
 
@@ -179,11 +182,18 @@ class _InternationalPhoneNumberInputState
     return null;
   }
 
+  Timer timer;
+
   @override
   void initState() {
     Future.delayed(Duration.zero, () => _loadCountries(context));
     _controller = TextEditingController();
-    _controller.addListener(_phoneNumberControllerListener);
+    _controller.addListener(() {
+      timer?.cancel();
+      timer = new Timer(Duration(milliseconds: 100), () {
+        _phoneNumberControllerListener();
+      });
+    });
     super.initState();
   }
 
