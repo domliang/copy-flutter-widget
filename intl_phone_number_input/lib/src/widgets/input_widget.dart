@@ -252,6 +252,7 @@ class _InternationalPhoneNumberInputState
     return decoration ??
         InputDecoration(
           border: widget.inputBorder ?? UnderlineInputBorder(),
+          focusedBorder: widget.inputBorder ?? UnderlineInputBorder(),
           hintText: widget.hintText,
           hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
           errorText: _isNotValid ? widget.errorMessage : null,
